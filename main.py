@@ -116,7 +116,7 @@ def detect(gray, frame):
                 cv2.rectangle(frame, (ox+o_face_x, oy), 
                              (ox+o_face_x, oy+50), (0, 255, 0), 3)
 
-                if(in_count % 9 == 0):       
+                if(in_count % 5 == 0):       
                     
                     # move L 
                     if(mex > ox - x):

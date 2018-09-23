@@ -13,6 +13,7 @@ int position = 0;
 
 int left_led  = 12;
 int right_led = 13;
+int servo_led = 2;
 
 void setup()
 {
@@ -22,6 +23,9 @@ void setup()
   // attach LEDs
   pinMode(left_led, OUTPUT);
   pinMode(right_led, OUTPUT);
+  pinMode(servo_led, OUTPUT);
+
+  digitalWrite(servo_led, HIGH);
 
   // begin serial communications
   Serial.begin(9600);
