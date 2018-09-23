@@ -11,17 +11,25 @@ Servo servo_1;
 int servo_1_pin = 9;
 int position = 0;
 
+int left_led  = 12;
+int right_led = 13;
+
 void setup()
 {
   // attach the servo to the pin 9
   servo_1.attach(servo_1_pin);
+
+  // attach LEDs
+  pinMode(left_led, OUTPUT);
+  pinMode(right_led, OUTPUT);
 
   // begin serial communications
   Serial.begin(9600);
   Serial.write("Begun communications");
 
   // initialize servo position
-  servo_1.write(0);
+//  servo_1.write(0);
+  return_to_start();
 }
 
 void loop()
@@ -37,7 +45,10 @@ void loop()
       if(position <= MAX_LEFT)
       {
         Serial.println("moving left");
+        digitalWrite(left_led, HIGH);
         position += STEP_SIZE;
+        delay(200);
+        digitalWrite(left_led, LOW);
       }
       break;
       
@@ -47,7 +58,10 @@ void loop()
       if(position >= MAX_RIGHT)
       {
         Serial.println("moving right");
+        digitalWrite(right_led, HIGH);
         position -= STEP_SIZE;
+        delay(200);
+        digitalWrite(right_led, LOW);
       }
       break;
       
@@ -62,6 +76,6 @@ void loop()
 
 void return_to_start()
 {
-  position = 0;
+  position = 90;
   servo_1.write(position);
 }
