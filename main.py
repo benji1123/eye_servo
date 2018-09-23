@@ -59,7 +59,7 @@ def detect(gray, frame):
     faces = face_cascade.detectMultiScale(gray, 1.3, 5); #got {x,y,w,h}
     
     if(args.bgrnd==1):
-        cv2.rectangle(frame,(0,0),(1000, 1000),(255,105,180),10000); 
+        cv2.rectangle(frame, (0, 0), (1000, 1000), (255, 105, 180), 10000); 
     
     
     # Draw Face-Bounds on Frame
@@ -94,8 +94,8 @@ def detect(gray, frame):
 
                 # set Origin @ present coordinate
                 if(cv2.waitKey(1) & 0xFF == ord('s')):
-                    ox, oy = mex, mey
-                    o_face_x = x;
+                    ox, oy = mex+x, mey
+                    o_face_x = 0;
                     print ("\n\nOrigin Position: ", ox+o_face_x," , ",oy, "\n")
                     break;
                     
@@ -116,19 +116,19 @@ def detect(gray, frame):
                 cv2.rectangle(frame, (ox+o_face_x, oy), 
                              (ox+o_face_x, oy+50), (0, 255, 0), 3)
 
-                if(in_count % 17 == 0):       
+                if(in_count % 9 == 0):       
                     
                     # move L 
-                    if(mex>ox):
+                    if(mex > ox - x):
                         move_left()
                         print("\nmoving left\nmex-:  ",mex+o_face_x,
                             "\nox: ",ox+o_face_x)
                     
                     # move R 
-                    elif(mex<ox):
+                    elif(mex < ox - 0):
                         move_right()
-                        print("moving right\nmex:  ",mex+o_face_x,
-                            "\nox: ",o_face_x)
+                        print("\nmoving right\nmex:  ", mex+o_face_x,
+                            "\nox: ",ox+o_face_x)
                 
                 in_count+=1;
     
