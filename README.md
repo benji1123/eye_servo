@@ -21,9 +21,7 @@ The current technology is inadequate.
     * Break easily, require repairs often
     * Require constant cleaning
 
-<center>
 ![Current tech: sip-and-puff wheelchair controllers](/Assets/sip-and-puff.png)
-</center>
 
 ## The Idea
 Our idea was to enable the use of simple, intuitive gestures to control
